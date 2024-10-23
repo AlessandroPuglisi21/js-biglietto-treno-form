@@ -1,73 +1,78 @@
-//!NOME DEL PASSEGGERO
 
-//Qui Avvio l'Evento e la stampa con il click sul Bottone
-document.getElementById("btnGeneretion").addEventListener("click", function () {
-  //Da qui ottengo l'input del nome che andró a Stampare
+//? ESERCIZIO CON FUNZIONI
+
+//! FUNZIONE NOME E COGNOME
+
+function stampaNomePasseggero() {
   let nome = document.getElementById("nome").value;
-
-  //Da qui parte la stampa
+  if (nome === "") {
+    console.error("Nessun nome inserito");
+    return; // Esci dalla funzione se il nome è vuoto
+  }
   document.getElementById("nomePasseggeroStamp").innerText = nome;
-  //! CARROZZA
+}
+
+//! FUNZIONE GENERAZIONE CARROZZA
+
+function generaCarrozza() {
   //Creo un let che generi un numero casuale da 1 a 10 quando viene cliccato il bottone
   let carrozza = Math.floor(Math.random() * 10) + 1;
 
   //Stampa del numero generato
   document.getElementById("carrozzaStamp").innerText = carrozza;
+}
 
-  //!CODICE CP
+//! FUNZIONE GENERAZIONE CODICE CP
+function generaCp() {
   //Creo un let che generi un numero casuale da 1 a 10000 quando viene cliccato il bottone
 
   let cpNumber = Math.floor(Math.random() * 10000) + 1;
 
   //Stampa del numero generato
   document.getElementById("cpStamp").innerText = cpNumber;
+}
 
-  //! GENERAZIONE OFFERTA
-  let eta = document.getElementById('eta').value.toLowerCase(); 
-  let offerta = ''
+//! FUNZIONE GENERAZIONE SCONTO
+function generazioneSconto() {
+  let eta = document.getElementById("eta").value.toLowerCase();
+  let offerta = "";
 
-  if (eta.includes('minorenne')){
-    offerta = 'Sconto del 20%';
-  } else if(eta.includes('over 65')){
-    offerta = 'Sconto del 30%';
-  }else {
-    offerta = 'Biglietto Standard';
+  //Decisione dello sconto
+  if (eta.includes("minorenne")) {
+    offerta = "Sconto del 20%";
+  } else if (eta.includes("over 65")) {
+    offerta = "Sconto del 30%";
+  } else {
+    offerta = "Biglietto Standard";
   }
-  document.getElementById('offertaStamp').innerText = offerta;
 
-  //! COSTO DEL BIGLIETTO 
-  let km = document.getElementById('km').value
-  const costoBase = km *0.21
-  let price = ''
+  //Stampa
+  document.getElementById("offertaStamp").innerText = offerta;
+}
 
-  if (eta.includes('minorenne')){
-    price = costoBase * 0.80
-   } else if(eta.includes('over 65')){
-    price = costoBase * 0.70
-   } else {
-    price = costoBase
-   }
+//! FUNZIONE COSTO DEL BIGLIETTO
 
-   document.getElementById('totalPrice').innerText = `€ ${price}`;
+function ticketPrice() {
+  let eta = document.getElementById("eta").value.toLowerCase();
+  let km = document.getElementById("km").value;
+  const costoBase = km * 0.21;
+  let price = "";
+
+  if (eta.includes("minorenne")) {
+    price = costoBase * 0.8;
+  } else if (eta.includes("over 65")) {
+    price = costoBase * 0.7;
+  } else {
+    price = costoBase;
+  }
+
+  document.getElementById("totalPrice").innerText = `€ ${price}`;
+}
+
+document.getElementById("btnGeneretion").addEventListener("click", function () {
+  stampaNomePasseggero();
+  generaCarrozza();
+  generaCp();
+  generazioneSconto();
+  ticketPrice();
 });
-
-//SCELTA CASUALE DELLA CARROZZA
-
-// document.getElementById('btnGeneretion').addEventListener('click', function(){
-
-//     //Creo un let che generi un numero casuale da 1 a 10 quando viene cliccato il bottone
-//     let carrozza = Math.floor(Math.random() * 10) + 1;
-
-//     //Stampa del numero generato
-//     document.getElementById('carrozzaStamp').innerText = carrozza;
-// })
-
-// //CODICE CP
-// document.getElementById("btnGeneretion").addEventListener("click", function () {
-//   //Creo un let che generi un numero casuale da 1 a 10000 quando viene cliccato il bottone
-
-//   let cpNumber = Math.floor(Math.random() * 10000) + 1;
-
-//   //Stampa del numero generato
-//   document.getElementById("cpStamp").innerText = cpNumber;
-// });
