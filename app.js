@@ -6,11 +6,12 @@
 function stampaNomePasseggero() {
   let nome = document.getElementById("nome").value;
   if (nome === "") {
-    console.error("Nessun nome inserito");
-    return; // Esci dalla funzione se il nome è vuoto
+    document.getElementById('error').innerHTML = "<p>*Inserisci un nome!</p>"; 
+  } else {
+    document.getElementById("nomePasseggeroStamp").innerText = nome;
   }
-  document.getElementById("nomePasseggeroStamp").innerText = nome;
 }
+
 
 //! FUNZIONE GENERAZIONE CARROZZA
 
@@ -53,20 +54,19 @@ function generazioneSconto() {
 //! FUNZIONE COSTO DEL BIGLIETTO
 
 function ticketPrice() {
-  let eta = document.getElementById("eta").value.toLowerCase();
+  let eta = document.getElementById("eta").value;
   let km = document.getElementById("km").value;
   const costoBase = km * 0.21;
   let price = "";
 
-  if (eta.includes("minorenne")) {
+  if (eta.includes("Minorenne")) {
     price = costoBase * 0.8;
-  } else if (eta.includes("over 65")) {
+  } else if (eta.includes("Over 65")) {
     price = costoBase * 0.7;
   } else {
     price = costoBase;
   }
-
-  document.getElementById("totalPrice").innerText = `€ ${price}`;
+ document.getElementById("totalPrice").innerText = `€ ${price.toFixed(2)}`;
 }
 
 document.getElementById("btnGeneretion").addEventListener("click", function () {
@@ -74,5 +74,5 @@ document.getElementById("btnGeneretion").addEventListener("click", function () {
   generaCarrozza();
   generaCp();
   generazioneSconto();
-  ticketPrice();
+  ticketPrice()
 });

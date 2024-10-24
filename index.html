@@ -77,7 +77,7 @@
                 id="nome"
                 placeholder="Inserisci il nome"
               />
-              <span></span>
+              <p id="error" class="text-danger fw-bold"></p>
             </div>
 
             <!-- Km da percorrere -->
@@ -89,6 +89,7 @@
                 id="km"
                 placeholder="0"
               />
+              <p id="errorKm" class="text-danger fw-bold"></p>
             </div>
 
             <!-- Fascia d'età -->
@@ -104,10 +105,14 @@
 
           <!-- Pulsanti Genera e Annulla -->
           <div class="mt-4 text-center">
-            <button type="button" class="btn btn-danger me-3" id="btnGeneretion">
+            <button
+              type="button"
+              class="btn btn-danger me-3"
+              id="btnGeneretion"
+            >
               Genera
             </button>
-            <button type="button" class="btn btn-secondary">Annulla</button>
+            <button type="reset" class="btn btn-secondary">Annulla</button>
           </div>
         </div>
 
@@ -140,7 +145,6 @@
           </table>
         </div>
       </div>
-
     </main>
 
     <!-- Script JavaScript -->
